@@ -2,13 +2,23 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class GreetingImplTest {
+	
+	private Greeting greeting;
+
+
+	@Before
+	public void setup()
+	{
+		greeting = new GreetingImpl();
+		
+	}
 
 	@Test
 	public void greetShouldReturnValidOutput() {
-		Greeting greeting = new GreetingImpl();
 		String result = greeting.greet("Junit");
 		assertNotNull(result);
 		assertEquals("Hello Junit", result);
@@ -17,7 +27,7 @@ public class GreetingImplTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void greetShouldThrowException()
 	{
-		Greeting greeting = new GreetingImpl();
+		greeting = new GreetingImpl();
 		greeting.greet(null);
 		
 	}
@@ -26,7 +36,7 @@ public class GreetingImplTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void greetShouldThrowExceptionforBlank()
 	{
-		Greeting greeting = new GreetingImpl();
+		 greeting = new GreetingImpl();
 		greeting.greet("");
 		
 	}
